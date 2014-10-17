@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareChase", "SquareChase\SquareChase\SquareChase.csproj", "{00B2AA36-A93D-42BA-9262-4C3AEB3625EC}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SquareChaseContent", "SquareChase\SquareChaseContent\SquareChaseContent.contentproj", "{D03AC478-254B-467F-8C58-4FD2012CC9D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareChaseContent", "SquareChase\SquareChaseContent\SquareChaseContent.contentproj", "{D03AC478-254B-467F-8C58-4FD2012CC9D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakesOnAGame", "..\SnakesOnAGame\SnakesOnAGame\SnakesOnAGame.csproj", "{CC80E6C1-EDAF-4962-975C-8C97C5169FED}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "SnakesOnAGameContent", "..\SnakesOnAGame\SnakesOnAGameContent\SnakesOnAGameContent.contentproj", "{87AA0C29-580D-47FE-9F2D-EB5218CEF3C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,12 @@ Global
 		{00B2AA36-A93D-42BA-9262-4C3AEB3625EC}.Release|x86.Build.0 = Release|x86
 		{D03AC478-254B-467F-8C58-4FD2012CC9D1}.Debug|x86.ActiveCfg = Debug|x86
 		{D03AC478-254B-467F-8C58-4FD2012CC9D1}.Release|x86.ActiveCfg = Release|x86
+		{CC80E6C1-EDAF-4962-975C-8C97C5169FED}.Debug|x86.ActiveCfg = Debug|x86
+		{CC80E6C1-EDAF-4962-975C-8C97C5169FED}.Debug|x86.Build.0 = Debug|x86
+		{CC80E6C1-EDAF-4962-975C-8C97C5169FED}.Release|x86.ActiveCfg = Release|x86
+		{CC80E6C1-EDAF-4962-975C-8C97C5169FED}.Release|x86.Build.0 = Release|x86
+		{87AA0C29-580D-47FE-9F2D-EB5218CEF3C6}.Debug|x86.ActiveCfg = Debug|x86
+		{87AA0C29-580D-47FE-9F2D-EB5218CEF3C6}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\bin\x86\Debug\Content\SQUARE.xnb</Output>
-      <Time>2014-10-17T08:03:34.1838-04:00</Time>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\SQUARE.xnb</Output>
+      <Time>2014-10-17T08:11:15.9398-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -16,10 +16,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChaseContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChaseContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGameContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGameContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

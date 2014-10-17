@@ -4,3 +4,9 @@ c:\users\eahscs\documents\visual studio 2010\Projects\SquareChase\SquareChase\Sq
 c:\users\eahscs\documents\visual studio 2010\Projects\SquareChase\SquareChase\SquareChase\obj\x86\Debug\SquareChase.exe
 c:\users\eahscs\documents\visual studio 2010\Projects\SquareChase\SquareChase\SquareChase\obj\x86\Debug\SquareChase.pdb
 c:\users\eahscs\documents\visual studio 2010\Projects\SquareChase\SquareChase\SquareChase\bin\x86\Debug\Content\SQUARE.xnb
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\bin\x86\Debug\Content\SQUARE.xnb
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\bin\x86\Debug\SquareChase.exe
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\bin\x86\Debug\SquareChase.pdb
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\obj\x86\Debug\SquareChase.exe
+C:\Users\EAHSCS\Documents\GitHub\XNA\SquareChase\SquareChase\SquareChase\obj\x86\Debug\SquareChase.pdb
