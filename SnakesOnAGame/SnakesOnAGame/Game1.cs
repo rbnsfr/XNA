@@ -19,7 +19,11 @@ namespace SnakesOnAGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Vector2> snake = new List<Vector2>();
-        Texture2D snakeTexture;
+        Texture2D snakeTexture, overTexture;
+        Vector2 direction = new Vector2(0, 1);
+        bool snoopmode = false; // my class wants this to be recurring
+        bool gameover = false;
+        Color col;
 
         public Game1()
         {
@@ -37,11 +41,11 @@ namespace SnakesOnAGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            snake.Add(new Vector2(400, 200));
-            snake.Add(new Vector2(400, 220));
-            snake.Add(new Vector2(400, 240));
-            snake.Add(new Vector2(400, 260));
-            snake.Add(new Vector2(400, 280));
+            snake.Add(new Vector2(4, 5));
+            snake.Add(new Vector2(4, 6));
+            snake.Add(new Vector2(4, 7));
+            snake.Add(new Vector2(4, 8));
+            snake.Add(new Vector2(4, 9));
 
             base.Initialize();
         }
@@ -56,6 +60,7 @@ namespace SnakesOnAGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             snakeTexture = Content.Load<Texture2D>(@"SQUARE");
+            overTexture = Content.Load<Texture2D>(@"GameOver");
 
             // TODO: use this.Content to load your game content here
         }
@@ -81,15 +86,43 @@ namespace SnakesOnAGame
                 this.Exit();
 
             // TODO: Add your update logic here
+            KeyboardState ks = Keyboard.GetState();
 
             // Fullscreen toggle
-            if (Keyboard.GetState().IsKeyDown(Keys.F)) graphics.ToggleFullScreen();
+            if (ks.IsKeyDown(Keys.F)) graphics.ToggleFullScreen();
 
             // Movement
-            if (Keyboard.GetState().IsKeyDown(Keys.Up)) snake[0].Y += 20;
-            else if (Keyboard.GetState().IsKeyDown(Keys.Down)) snake[0].Y -= 20;
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left)) snake[0].X -= 20;
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right)) snake[0].X += 20;
+            if (ks.IsKeyDown(Keys.Up)) direction = new Vector2(0, -1);
+            else if (ks.IsKeyDown(Keys.Down)) direction = new Vector2(0, 1);
+            else if (ks.IsKeyDown(Keys.Left)) direction = new Vector2(-1, 0);
+            else if (ks.IsKeyDown(Keys.Right)) direction = new Vector2(1, 0);
+
+            // Snoop Mode
+            if (ks.IsKeyDown(Keys.Space) && snoopmode == false) snoopmode = true;
+            else if (ks.IsKeyDown(Keys.Space) && snoopmode) snoopmode = false;
+
+            if (snoopmode) { col = Color.Green; gameover = true; }
+            else col = Color.Red;
+
+            // No leaving the window
+            Rectangle bounds = this.Window.ClientBounds;
+
+            //if (snake[0].Y >= bounds.Top) snake[0] = new Vector2(bounds.Center.X, bounds.Center.Y);
+            //else if (snake[0].Y <= bounds.Bottom) snake[0] = new Vector2(bounds.Center.X, bounds.Center.Y);
+
+            for (int i = snake.Count - 1; i > 0; i--)
+            {
+                snake[i] = snake[i - 1];
+            }
+
+            snake[0] += direction;
+
+            if (gameover)
+            {
+                spriteBatch.Begin();
+                spriteBatch.Draw(overTexture, new Vector2(bounds.Center.X, bounds.Center.Y), Color.White);
+                spriteBatch.End();
+            }
 
             base.Update(gameTime);
         }
@@ -101,12 +134,13 @@ namespace SnakesOnAGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            Rectangle bounds = this.Window.ClientBounds;
 
             spriteBatch.Begin();
             // TODO: Add your drawing code here
             for (int i = 0; i < snake.Count; i++)
             {
-                spriteBatch.Draw(snakeTexture, new Rectangle((int)snake[i].X, (int)snake[i].Y, 20, 20), new Rectangle(0, 0, snakeTexture.Width, snakeTexture.Height), Color.Red);
+                spriteBatch.Draw(snakeTexture, new Rectangle((int)snake[i].X * 20, (int)snake[i].Y * 20, 20, 20), new Rectangle(0, 0, snakeTexture.Width, snakeTexture.Height), col);
             }
             spriteBatch.End();
 

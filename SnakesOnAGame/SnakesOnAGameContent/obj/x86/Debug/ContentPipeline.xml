@@ -8,7 +8,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\SQUARE.xnb</Output>
-      <Time>2014-10-17T08:11:15.9398-04:00</Time>
+      <Time>2014-10-20T07:55:27.2404-04:00</Time>
+    </Item>
+    <Item>
+      <Source>GameOver.png</Source>
+      <Name>GameOver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\GameOver.xnb</Output>
+      <Time>2014-10-20T08:41:25.3134-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
