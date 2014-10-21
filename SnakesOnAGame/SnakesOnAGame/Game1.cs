@@ -19,16 +19,20 @@ namespace SnakesOnAGame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         List<Vector2> snake = new List<Vector2>();
-        Texture2D snakeTexture, overTexture;
+        Vector2 food;
+        Random rand = new Random();
+        Texture2D snakeTexture, overTexture, pelletTexture;
         Vector2 direction = new Vector2(0, 1);
         bool snoopmode = false; // my class wants this to be recurring
         bool gameover = false;
-        Color col;
+        Color col, ballcol;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
             Content.RootDirectory = "Content";
         }
 
@@ -47,6 +51,12 @@ namespace SnakesOnAGame
             snake.Add(new Vector2(4, 8));
             snake.Add(new Vector2(4, 9));
 
+            Rectangle bounds = this.Window.ClientBounds;
+            int irandx = rand.Next(bounds.Left, bounds.Right);
+            int irandy = rand.Next(bounds.Top, bounds.Bottom);
+
+            food = new Vector2(irandx, irandy);
+
             base.Initialize();
         }
 
@@ -61,6 +71,7 @@ namespace SnakesOnAGame
 
             snakeTexture = Content.Load<Texture2D>(@"SQUARE");
             overTexture = Content.Load<Texture2D>(@"GameOver");
+            pelletTexture = Content.Load<Texture2D>(@"SQUARE");
 
             // TODO: use this.Content to load your game content here
         }
@@ -88,9 +99,6 @@ namespace SnakesOnAGame
             // TODO: Add your update logic here
             KeyboardState ks = Keyboard.GetState();
 
-            // Fullscreen toggle
-            if (ks.IsKeyDown(Keys.F)) graphics.ToggleFullScreen();
-
             // Movement
             if (ks.IsKeyDown(Keys.Up)) direction = new Vector2(0, -1);
             else if (ks.IsKeyDown(Keys.Down)) direction = new Vector2(0, 1);
@@ -101,28 +109,38 @@ namespace SnakesOnAGame
             if (ks.IsKeyDown(Keys.Space) && snoopmode == false) snoopmode = true;
             else if (ks.IsKeyDown(Keys.Space) && snoopmode) snoopmode = false;
 
-            if (snoopmode) { col = Color.Green; gameover = true; }
-            else col = Color.Red;
+            if (snoopmode) { col = Color.Green; ballcol = Color.GreenYellow; direction *= new Vector2(0.5f, 0.5f); Window.Title += "[Snoop Mode]"; }
+            else if (snoopmode == false) { col = Color.Red; ballcol = Color.Yellow; direction = new Vector2(direction.X, direction.Y); }
 
             // No leaving the window
             Rectangle bounds = this.Window.ClientBounds;
 
-            //if (snake[0].Y >= bounds.Top) snake[0] = new Vector2(bounds.Center.X, bounds.Center.Y);
-            //else if (snake[0].Y <= bounds.Bottom) snake[0] = new Vector2(bounds.Center.X, bounds.Center.Y);
-
-            for (int i = snake.Count - 1; i > 0; i--)
+            if (snake.Count > 0)
             {
-                snake[i] = snake[i - 1];
-            }
+                if (snake[0].Y > bounds.Bottom) gameover = true;
 
-            snake[0] += direction;
+                for (int i = snake.Count - 1; i > 0; i--)
+                {
+                    snake[i] = snake[i - 1];
+                }
+
+                snake[0] += direction;
+
+                if (snake[0] == food)
+                {
+                    int irandx = rand.Next(bounds.Left, bounds.Right);
+                    int irandy = rand.Next(bounds.Top, bounds.Bottom);
+                    food = new Vector2(irandx, irandy);
+                    snake.Add(new Vector2(snake[0].X, snake[0].Y - snake.Count * 20));
+                }
+            }
 
             if (gameover)
             {
-                spriteBatch.Begin();
-                spriteBatch.Draw(overTexture, new Vector2(bounds.Center.X, bounds.Center.Y), Color.White);
-                spriteBatch.End();
+                snake.Clear();
             }
+
+
 
             base.Update(gameTime);
         }
@@ -134,14 +152,22 @@ namespace SnakesOnAGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            Rectangle bounds = this.Window.ClientBounds;
 
             spriteBatch.Begin();
             // TODO: Add your drawing code here
             for (int i = 0; i < snake.Count; i++)
-            {
                 spriteBatch.Draw(snakeTexture, new Rectangle((int)snake[i].X * 20, (int)snake[i].Y * 20, 20, 20), new Rectangle(0, 0, snakeTexture.Width, snakeTexture.Height), col);
+
+            if (gameover)
+            {
+                Rectangle bounds = this.Window.ClientBounds;
+                Vector2 pos = new Vector2(bounds.Width/2, bounds.Height/2) - new Vector2(overTexture.Width/2, overTexture.Height/2);
+                spriteBatch.Draw(overTexture, pos, Color.White);
             }
+
+
+            spriteBatch.Draw(pelletTexture, food, ballcol);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
