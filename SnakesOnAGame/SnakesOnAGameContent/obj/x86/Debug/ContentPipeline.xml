@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\SQUARE.xnb</Output>
-      <Time>2014-10-21T07:35:37.4658-04:00</Time>
+      <Time>2014-10-22T07:54:30.665-04:00</Time>
     </Item>
     <Item>
       <Source>GameOver.png</Source>
@@ -17,7 +17,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\GameOver.xnb</Output>
-      <Time>2014-10-21T07:35:37.4648-04:00</Time>
+      <Time>2014-10-22T07:54:30.665-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Background.png</Source>
+      <Name>Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Background.xnb</Output>
+      <Time>2014-10-22T08:22:13.326-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Atari.png</Source>
+      <Name>Atari</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Atari.xnb</Output>
+      <Time>2014-10-22T08:49:19.524-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

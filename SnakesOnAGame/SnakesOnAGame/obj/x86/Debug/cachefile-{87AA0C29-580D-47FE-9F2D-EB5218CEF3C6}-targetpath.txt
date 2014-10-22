@@ -1,2 +1,4 @@
 Content\SQUARE.xnb
 Content\GameOver.xnb
+Content\Background.xnb
+Content\Atari.xnb

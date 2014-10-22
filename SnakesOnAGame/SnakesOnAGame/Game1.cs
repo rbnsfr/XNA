@@ -21,11 +21,12 @@ namespace SnakesOnAGame
         List<Vector2> snake = new List<Vector2>();
         Vector2 food;
         Random rand = new Random();
-        Texture2D snakeTexture, overTexture, pelletTexture;
+        Texture2D snakeTexture, overTexture, pelletTexture, background;
         Vector2 direction = new Vector2(0, 1);
         bool snoopmode = false; // my class wants this to be recurring
         bool gameover = false;
         Color col, ballcol;
+        string title = "Snakes on a Game";
 
         public Game1()
         {
@@ -57,6 +58,8 @@ namespace SnakesOnAGame
 
             food = new Vector2(irandx, irandy);
 
+            Window.Title = "Snakes on a Game";
+
             base.Initialize();
         }
 
@@ -69,6 +72,7 @@ namespace SnakesOnAGame
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            background = Content.Load<Texture2D>(@"Atari");
             snakeTexture = Content.Load<Texture2D>(@"SQUARE");
             overTexture = Content.Load<Texture2D>(@"GameOver");
             pelletTexture = Content.Load<Texture2D>(@"SQUARE");
@@ -106,11 +110,11 @@ namespace SnakesOnAGame
             else if (ks.IsKeyDown(Keys.Right)) direction = new Vector2(1, 0);
 
             // Snoop Mode
-            if (ks.IsKeyDown(Keys.Space) && snoopmode == false) snoopmode = true;
-            else if (ks.IsKeyDown(Keys.Space) && snoopmode) snoopmode = false;
+            if (ks.IsKeyDown(Keys.Space) && snoopmode == false) { snoopmode = true; Window.Title = title + " [Snoop Mode]"; }
+            else if (ks.IsKeyDown(Keys.Space) && snoopmode) { snoopmode = false; Window.Title = title; }
 
-            if (snoopmode) { col = Color.Green; ballcol = Color.GreenYellow; direction *= new Vector2(0.5f, 0.5f); Window.Title += "[Snoop Mode]"; }
-            else if (snoopmode == false) { col = Color.Red; ballcol = Color.Yellow; direction = new Vector2(direction.X, direction.Y); }
+            if (snoopmode) { col = Color.Green; ballcol = Color.GreenYellow; direction *= new Vector2(0.5f, 0.5f); }
+            else { col = Color.Red; ballcol = Color.Yellow; direction *= new Vector2(1, 1); }
 
             // No leaving the window
             Rectangle bounds = this.Window.ClientBounds;
@@ -140,8 +144,6 @@ namespace SnakesOnAGame
                 snake.Clear();
             }
 
-
-
             base.Update(gameTime);
         }
 
@@ -155,6 +157,8 @@ namespace SnakesOnAGame
 
             spriteBatch.Begin();
             // TODO: Add your drawing code here
+            spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
+
             for (int i = 0; i < snake.Count; i++)
                 spriteBatch.Draw(snakeTexture, new Rectangle((int)snake[i].X * 20, (int)snake[i].Y * 20, 20, 20), new Rectangle(0, 0, snakeTexture.Width, snakeTexture.Height), col);
 
@@ -165,12 +169,16 @@ namespace SnakesOnAGame
                 spriteBatch.Draw(overTexture, pos, Color.White);
             }
 
-
             spriteBatch.Draw(pelletTexture, food, ballcol);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
+    }
+
+    public class Snake
+    {
+        List<Vector2> snake = new List<Vector2>();
     }
 }
