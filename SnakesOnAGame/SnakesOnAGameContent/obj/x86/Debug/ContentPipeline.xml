@@ -2,22 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>SQUARE.bmp</Source>
-      <Name>SQUARE</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\SQUARE.xnb</Output>
-      <Time>2014-10-22T07:54:30.665-04:00</Time>
-    </Item>
-    <Item>
       <Source>GameOver.png</Source>
       <Name>GameOver</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\GameOver.xnb</Output>
-      <Time>2014-10-22T07:54:30.665-04:00</Time>
+      <Time>2014-10-23T07:24:26.5562-04:00</Time>
     </Item>
     <Item>
       <Source>Background.png</Source>
@@ -26,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Background.xnb</Output>
-      <Time>2014-10-22T08:22:13.326-04:00</Time>
+      <Time>2014-10-23T07:24:26.5562-04:00</Time>
     </Item>
     <Item>
       <Source>Atari.png</Source>
@@ -35,7 +26,34 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Atari.xnb</Output>
-      <Time>2014-10-22T08:49:19.524-04:00</Time>
+      <Time>2014-10-23T07:24:26.5412-04:00</Time>
+    </Item>
+    <Item>
+      <Source>SQUARE.bmp</Source>
+      <Name>SQUARE</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\SQUARE.xnb</Output>
+      <Time>2014-10-23T07:38:09.9642-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Gdir.png</Source>
+      <Name>Gdir</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Gdir.xnb</Output>
+      <Time>2014-10-23T08:09:49.7582-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Sdir.png</Source>
+      <Name>Sdir</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\XNA\SnakesOnAGame\SnakesOnAGame\bin\x86\Debug\Content\Sdir.xnb</Output>
+      <Time>2014-10-23T08:09:58.9562-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -21,12 +21,13 @@ namespace SnakesOnAGame
         List<Vector2> snake = new List<Vector2>();
         Vector2 food;
         Random rand = new Random();
-        Texture2D snakeTexture, overTexture, pelletTexture, background;
+        Texture2D snakeTexture, overTexture, pelletTexture, background, gtexture, stexture;
         Vector2 direction = new Vector2(0, 1);
         bool snoopmode = false; // my class wants this to be recurring
         bool gameover = false;
         Color col, ballcol;
         string title = "Snakes on a Game";
+        float speed;
 
         public Game1()
         {
@@ -51,6 +52,7 @@ namespace SnakesOnAGame
             snake.Add(new Vector2(4, 7));
             snake.Add(new Vector2(4, 8));
             snake.Add(new Vector2(4, 9));
+            snake.Add(new Vector2(4, 10));
 
             Rectangle bounds = this.Window.ClientBounds;
             int irandx = rand.Next(bounds.Left, bounds.Right);
@@ -76,6 +78,8 @@ namespace SnakesOnAGame
             snakeTexture = Content.Load<Texture2D>(@"SQUARE");
             overTexture = Content.Load<Texture2D>(@"GameOver");
             pelletTexture = Content.Load<Texture2D>(@"SQUARE");
+            gtexture = Content.Load<Texture2D>(@"Gdir");
+            stexture = Content.Load<Texture2D>(@"Sdir");
 
             // TODO: use this.Content to load your game content here
         }
@@ -103,25 +107,28 @@ namespace SnakesOnAGame
             // TODO: Add your update logic here
             KeyboardState ks = Keyboard.GetState();
 
+            if (snoopmode) speed = 0.5f;
+            else speed = 1;
+
             // Movement
-            if (ks.IsKeyDown(Keys.Up)) direction = new Vector2(0, -1);
-            else if (ks.IsKeyDown(Keys.Down)) direction = new Vector2(0, 1);
-            else if (ks.IsKeyDown(Keys.Left)) direction = new Vector2(-1, 0);
-            else if (ks.IsKeyDown(Keys.Right)) direction = new Vector2(1, 0);
+            if (ks.IsKeyDown(Keys.Up)) direction = new Vector2(0, -speed);
+            else if (ks.IsKeyDown(Keys.Down)) direction = new Vector2(0, speed);
+            else if (ks.IsKeyDown(Keys.Left)) direction = new Vector2(-speed, 0);
+            else if (ks.IsKeyDown(Keys.Right)) direction = new Vector2(speed, 0);
 
             // Snoop Mode
-            if (ks.IsKeyDown(Keys.Space) && snoopmode == false) { snoopmode = true; Window.Title = title + " [Snoop Mode]"; }
-            else if (ks.IsKeyDown(Keys.Space) && snoopmode) { snoopmode = false; Window.Title = title; }
+            if (ks.IsKeyDown(Keys.S) && snoopmode == false) { snoopmode = true; Window.Title = title + " [Snoop Mode]"; }
+            else if (ks.IsKeyDown(Keys.S) && snoopmode) { snoopmode = false; Window.Title = title; }
 
-            if (snoopmode) { col = Color.Green; ballcol = Color.GreenYellow; direction *= new Vector2(0.5f, 0.5f); }
-            else { col = Color.Red; ballcol = Color.Yellow; direction *= new Vector2(1, 1); }
+            if (snoopmode) { col = Color.Green; ballcol = Color.GreenYellow; }
+            else { col = Color.Red; ballcol = Color.Yellow; }
 
             // No leaving the window
             Rectangle bounds = this.Window.ClientBounds;
 
             if (snake.Count > 0)
             {
-                if (snake[0].Y > bounds.Bottom) gameover = true;
+                if (snake[0].Y > this.GraphicsDevice.Viewport.Bounds.Height / 2) gameover = true;
 
                 for (int i = snake.Count - 1; i > 0; i--)
                 {
@@ -159,17 +166,20 @@ namespace SnakesOnAGame
             // TODO: Add your drawing code here
             spriteBatch.Draw(background, new Vector2(0, 0), Color.White);
 
+                            Rectangle bounds = this.Window.ClientBounds;
+
             for (int i = 0; i < snake.Count; i++)
                 spriteBatch.Draw(snakeTexture, new Rectangle((int)snake[i].X * 20, (int)snake[i].Y * 20, 20, 20), new Rectangle(0, 0, snakeTexture.Width, snakeTexture.Height), col);
 
             if (gameover)
             {
-                Rectangle bounds = this.Window.ClientBounds;
                 Vector2 pos = new Vector2(bounds.Width/2, bounds.Height/2) - new Vector2(overTexture.Width/2, overTexture.Height/2);
                 spriteBatch.Draw(overTexture, pos, Color.White);
             }
 
             spriteBatch.Draw(pelletTexture, food, ballcol);
+            spriteBatch.Draw(gtexture, new Vector2(bounds.Center.X - gtexture.Width, bounds.Center.Y - gtexture.Height), Color.White);
+            spriteBatch.Draw(stexture, new Vector2(bounds.Center.X - stexture.Width, bounds.Center.Y - stexture.Height + 100), Color.White);
 
             spriteBatch.End();
 
